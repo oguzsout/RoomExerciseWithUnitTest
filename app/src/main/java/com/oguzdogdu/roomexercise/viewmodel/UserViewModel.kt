@@ -7,13 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.oguzdogdu.roomexercise.data.UserDatabase
 import com.oguzdogdu.roomexercise.model.User
 import com.oguzdogdu.roomexercise.repository.UserRepository
+import com.oguzdogdu.roomexercise.repository.UserRepositoryInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
 
-     val readAllData: LiveData<List<User>>
-    private val repository: UserRepository
+    val readAllData: LiveData<List<User>>
+    private val repository: UserRepositoryInterface
     init {
         val userDao = UserDatabase.getDatabase(application).userDao()
         repository = UserRepository(userDao)
