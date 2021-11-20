@@ -18,7 +18,4 @@ class UserRepository(private val userDao: UserDao):UserRepositoryInterface {
     override suspend fun deleteUser(user: User){
         userDao.deleteUser(user)
     }
-    override suspend fun deleteAllUsers(){
-        userDao.deleteAllUsers()
-    }
 }

@@ -2,8 +2,6 @@ package com.oguzdogdu.roomexercise.fragments
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,8 +27,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentListBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,36 +37,12 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer{
-            adapter.setData(it)
+            adapter.users = it
         })
         binding.floatingActionButton.setOnClickListener{
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
-
-        setHasOptionsMenu(true)
     }
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_delete){
-            deleteUser()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-    private fun deleteUser(){
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes"){_, _ ->
-            mUserViewModel.deleteAllUsers()
-            Toast.makeText(context,"Successfully removed everything", Toast.LENGTH_SHORT).show()
-        }
-        builder.setNegativeButton("No"){_, _ ->}
-        builder.setTitle("Delete everything?")
-        builder.setMessage("Are you sure you want to delete everything?")
-        builder.create().show()
-    }
-
 }
