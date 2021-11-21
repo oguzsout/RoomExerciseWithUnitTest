@@ -11,38 +11,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:autofillHints="@string/name"
         android:ems="10"
         android:hint="@string/name"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        android:autofillHints="@string/name" />
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/addLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:autofillHints="@string/last_name"
         android:ems="10"
         android:hint="@string/last_name"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addFirstName"
-        tools:ignore="MissingConstraints"
-        android:autofillHints="@string/last_name"/>
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="@string/age"
+        android:autofillHints="@string/age"
         android:ems="10"
+        android:hint="@string/age"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addLastName"
-        android:autofillHints="@string/age"/>
+        app:layout_constraintTop_toBottomOf="@+id/addLastName" />
 
     <Button
         android:id="@+id/btnAdd"

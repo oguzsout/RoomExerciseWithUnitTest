@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.oguzdogdu.roomexercise.data.UserDatabase
 import com.oguzdogdu.roomexercise.model.User
 import com.oguzdogdu.roomexercise.repository.UserRepository
-import com.oguzdogdu.roomexercise.repository.UserRepositoryInterface
 import com.oguzdogdu.roomexercise.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

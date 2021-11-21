@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.oguzdogdu.roomexercise.R
@@ -29,10 +28,11 @@ class AddFragment : Fragment(R.layout.fragment_add) {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+
         binding.btnAdd.setOnClickListener {
             mUserViewModel.makeUser(
                 binding.addFirstName.text.toString(),
@@ -40,14 +40,10 @@ class AddFragment : Fragment(R.layout.fragment_add) {
                 binding.editTextAge.text.toString()
             )
             insertDataToDatabase()
-
         }
     }
-
     private fun insertDataToDatabase() {
-
-
-        mUserViewModel.insertUserMessage.observe(viewLifecycleOwner, Observer {
+        mUserViewModel.insertUserMessage.observe(viewLifecycleOwner, {
             when (it.status) {
                 Status.SUCCESS -> {
                     Toast.makeText(requireActivity(), "Success", Toast.LENGTH_LONG).show()
@@ -60,11 +56,9 @@ class AddFragment : Fragment(R.layout.fragment_add) {
                 }
 
                 Status.LOADING -> {
-
                 }
             }
         })
-
         /*
          val firstName = binding.addFirstName.text.toString()
          val lastName = binding.addLastName.text.toString()
@@ -84,8 +78,6 @@ class AddFragment : Fragment(R.layout.fragment_add) {
 
          */
     }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
