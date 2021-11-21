@@ -25,10 +25,10 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:clickable="true"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/add"
         android:focusable="true"
         android:src="@drawable/ic_add"
-        android:tint="@color/white"
+        app:backgroundTint="#FF9800"
         app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

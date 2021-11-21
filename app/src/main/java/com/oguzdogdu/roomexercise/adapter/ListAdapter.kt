@@ -12,21 +12,17 @@ import com.oguzdogdu.roomexercise.fragments.ListFragmentDirections
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
-    class MyViewHolder(val binding: CustomRowBinding) : RecyclerView.ViewHolder(binding.root){
+    class MyViewHolder(val binding: CustomRowBinding) : RecyclerView.ViewHolder(binding.root)
 
-    }
     private val diffUtil = object : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-            return oldItem == newItem
+            return oldItem.id == newItem.id
         }
-
-
     }
-
     private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
 
     var users: List<User>
@@ -48,8 +44,6 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
             holder.itemView.findNavController().navigate(action)
         }
-
     }
-
     override fun getItemCount() = users.size
 }

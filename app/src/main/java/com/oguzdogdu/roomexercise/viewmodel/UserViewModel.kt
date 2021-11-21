@@ -41,6 +41,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         }
         val user = User(0, name, lastName, userAge)
         addUser(user)
+        updateUser(user)
         insertUserMsg.postValue(Resource.success(user))
     }
 
