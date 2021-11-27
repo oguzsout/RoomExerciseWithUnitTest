@@ -12,6 +12,7 @@ import com.oguzdogdu.roomexercise.R
 import com.oguzdogdu.roomexercise.databinding.FragmentAddBinding
 import com.oguzdogdu.roomexercise.util.Status
 import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
 class AddFragment : Fragment(R.layout.fragment_add) {

@@ -14,6 +14,8 @@ import com.oguzdogdu.roomexercise.R
 import com.oguzdogdu.roomexercise.databinding.FragmentUpdateBinding
 import com.oguzdogdu.roomexercise.util.Status
 import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class UpdateFragment : Fragment(R.layout.fragment_update) {
 

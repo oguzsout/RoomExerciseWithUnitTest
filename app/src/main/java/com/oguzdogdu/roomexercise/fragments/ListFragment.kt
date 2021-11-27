@@ -12,6 +12,7 @@ import com.oguzdogdu.roomexercise.R
 import com.oguzdogdu.roomexercise.adapter.ListAdapter
 import com.oguzdogdu.roomexercise.databinding.FragmentListBinding
 import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
 class ListFragment : Fragment(R.layout.fragment_list) {
