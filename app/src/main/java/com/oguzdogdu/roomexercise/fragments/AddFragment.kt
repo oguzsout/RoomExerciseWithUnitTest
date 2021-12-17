@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.oguzdogdu.roomexercise.R
 import com.oguzdogdu.roomexercise.databinding.FragmentAddBinding
@@ -14,13 +14,13 @@ import com.oguzdogdu.roomexercise.util.Status
 import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AddFragment : Fragment(R.layout.fragment_add) {
 
     private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var mUserViewModel: UserViewModel
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,20 +31,18 @@ class AddFragment : Fragment(R.layout.fragment_add) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
-
+        insertDataToDatabase()
         binding.btnAdd.setOnClickListener {
-            mUserViewModel.makeUser(
+            userViewModel.makeUser(
                 binding.addFirstName.text.toString(),
                 binding.addLastName.text.toString(),
                 binding.editTextAge.text.toString()
             )
-            insertDataToDatabase()
+
         }
     }
     private fun insertDataToDatabase() {
-        mUserViewModel.insertUserMessage.observe(viewLifecycleOwner, {
+        userViewModel.insertUserMessage.observe(viewLifecycleOwner, {
             when (it.status) {
                 Status.SUCCESS -> {
                     Toast.makeText(requireActivity(), "Success", Toast.LENGTH_LONG).show()

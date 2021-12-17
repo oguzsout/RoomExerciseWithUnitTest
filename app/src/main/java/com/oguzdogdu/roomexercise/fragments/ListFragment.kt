@@ -5,25 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oguzdogdu.roomexercise.R
-import com.oguzdogdu.roomexercise.adapter.ListAdapter
+import com.oguzdogdu.roomexercise.adapter.UserAdapter
 import com.oguzdogdu.roomexercise.databinding.FragmentListBinding
 import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ListFragment : Fragment(R.layout.fragment_list) {
 
-    private lateinit var mUserViewModel: UserViewModel
+    private val userViewModel: UserViewModel by viewModels()
 
     private var _binding: FragmentListBinding? = null
 
     private val binding get() = _binding!!
 
-    private val adapter = ListAdapter()
+    private val adapter = UserAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,8 +50,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     }
 
     private fun observeData() {
-        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, {
+        userViewModel.userList.observe(viewLifecycleOwner, {
             adapter.users = it
         })
     }

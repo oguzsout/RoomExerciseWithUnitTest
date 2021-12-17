@@ -7,17 +7,18 @@ import com.oguzdogdu.roomexercise.model.User
 class UserRepository(private val userDao: UserDao):UserRepositoryInterface {
 
     override fun getUsers(): LiveData<List<User>> {
-        userDao.readAllData()
+       return userDao.readAllData()
     }
 
-    override suspend fun addUser(user: User){
+    override suspend fun addUser(user: User) {
         userDao.addUser(user)
     }
-    override suspend fun updateUser(user: User){
+
+    override suspend fun updateUser(user: User) {
         userDao.updateUser(user)
     }
 
-    override suspend fun deleteUser(user: User){
+    override suspend fun deleteUser(user: User) {
         userDao.deleteUser(user)
     }
 }

@@ -7,11 +7,9 @@ import androidx.room.PrimaryKey
 @kotlinx.parcelize.Parcelize
 @Entity(tableName = "user_table")
 class User(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
     val firstName: String,
     val lastName: String,
-    val age: Int
-): Parcelable{
-
-}
+    val age: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
+) : Parcelable

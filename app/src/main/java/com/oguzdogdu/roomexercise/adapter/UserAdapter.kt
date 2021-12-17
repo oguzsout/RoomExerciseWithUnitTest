@@ -3,14 +3,14 @@ package com.oguzdogdu.roomexercise.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.oguzdogdu.roomexercise.databinding.CustomRowBinding
 import com.oguzdogdu.roomexercise.fragments.ListFragmentDirections
 import com.oguzdogdu.roomexercise.model.User
 
-class UserAdapter : ListAdapter<User, UserAdapter.MyViewHolder>(UserComparator()) {
+class UserAdapter : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
     class MyViewHolder(val binding: CustomRowBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
@@ -22,13 +22,22 @@ class UserAdapter : ListAdapter<User, UserAdapter.MyViewHolder>(UserComparator()
         }
     }
 
-    class UserComparator : DiffUtil.ItemCallback<User>() {
-        override fun areItemsTheSame(oldItem: User, newItem: User) =
-            oldItem.id == newItem.id
+    private val diffUtil = object : DiffUtil.ItemCallback<User>() {
+        override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+            return oldItem == newItem
+        }
 
-        override fun areContentsTheSame(oldItem: User, newItem: User) =
-            oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+            return oldItem == newItem
+        }
     }
+
+    private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
+
+    var users: List<User>
+        get() = recyclerListDiffer.currentList
+        set(value) = recyclerListDiffer.submitList(value)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
@@ -41,13 +50,13 @@ class UserAdapter : ListAdapter<User, UserAdapter.MyViewHolder>(UserComparator()
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = getItem(position)
-        if (currentItem != null) {
-            holder.bind(currentItem)
-        }
+        val userList = users[position]
+        holder.bind(userList)
         holder.binding.rowLayout.setOnClickListener {
-            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(userList)
             holder.itemView.findNavController().navigate(action)
         }
     }
+
+    override fun getItemCount() = users.size
 }
