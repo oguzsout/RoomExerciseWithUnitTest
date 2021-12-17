@@ -6,7 +6,9 @@ import com.oguzdogdu.roomexercise.model.User
 
 class UserRepository(private val userDao: UserDao):UserRepositoryInterface {
 
-    val readAllData: LiveData<List<User>> = userDao.readAllData()
+    override fun getUsers(): LiveData<List<User>> {
+        userDao.readAllData()
+    }
 
     override suspend fun addUser(user: User){
         userDao.addUser(user)

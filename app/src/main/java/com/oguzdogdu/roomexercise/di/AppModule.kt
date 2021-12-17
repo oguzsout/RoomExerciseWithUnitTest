@@ -2,7 +2,10 @@ package com.oguzdogdu.roomexercise.di
 
 import android.content.Context
 import androidx.room.Room
+import com.oguzdogdu.roomexercise.data.UserDao
 import com.oguzdogdu.roomexercise.data.UserDatabase
+import com.oguzdogdu.roomexercise.repository.UserRepository
+import com.oguzdogdu.roomexercise.repository.UserRepositoryInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class AppModule {
+object AppModule {
     @Singleton
     @Provides
     fun injectRoomDatabase(
@@ -21,8 +24,13 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun injectDao(
+    fun provideDefaultShoppingRepository(
+        dao: UserDao
+    ) = UserRepository(dao) as UserRepositoryInterface
+
+    @Singleton
+    @Provides
+    fun provideUserDao(
         database: UserDatabase
     ) = database.userDao()
-
 }
