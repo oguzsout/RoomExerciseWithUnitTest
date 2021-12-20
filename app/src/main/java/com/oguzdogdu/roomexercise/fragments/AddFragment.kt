@@ -15,20 +15,10 @@ import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AddFragment : Fragment(R.layout.fragment_add) {
-
-    private var _binding: FragmentAddBinding? = null
-    private val binding get() = _binding!!
+class AddFragment : BaseFragment<FragmentAddBinding>(FragmentAddBinding::inflate) {
 
     private val userViewModel: UserViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAddBinding.inflate(inflater, container, false)
-        return binding.root
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         insertDataToDatabase()
@@ -38,7 +28,6 @@ class AddFragment : Fragment(R.layout.fragment_add) {
                 binding.addLastName.text.toString(),
                 binding.editTextAge.text.toString()
             )
-
         }
     }
     private fun insertDataToDatabase() {
@@ -76,9 +65,5 @@ class AddFragment : Fragment(R.layout.fragment_add) {
          return  !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty() )
 
          */
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

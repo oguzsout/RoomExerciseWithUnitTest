@@ -1,12 +1,9 @@
 package com.oguzdogdu.roomexercise.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,32 +14,18 @@ import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UpdateFragment : Fragment(R.layout.fragment_update) {
+class UpdateFragment : BaseFragment<FragmentUpdateBinding>(FragmentUpdateBinding::inflate) {
 
     private val args by navArgs<UpdateFragmentArgs>()
 
     private val userViewModel: UserViewModel by viewModels()
 
-    private var _binding: FragmentUpdateBinding? = null
-
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentUpdateBinding.inflate(inflater, container, false)
-        return binding.root
-
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.updateFirstName.setText(args.currentUser.firstName)
         binding.updateLastName.setText(args.currentUser.lastName)
         binding.updateAge.setText(args.currentUser.age.toString())
-
-
 
         binding.btnUpdate.setOnClickListener {
             update()
@@ -52,7 +35,6 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
             deleteUser()
         }
     }
-
     private fun update() {
         val firstName = binding.updateFirstName.text.toString()
         val lastName = binding.updateLastName.text.toString()
@@ -74,10 +56,7 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
       } else {
           Toast.makeText(context, "Please fill out all fields", Toast.LENGTH_SHORT).show()
       }
-
-
      */
-
     private fun deleteUser() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
@@ -93,11 +72,6 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         builder.setTitle("Delete ${args.currentUser.firstName}?")
         builder.setMessage("Are you sure you want to delete ${args.currentUser.firstName}?")
         builder.create().show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
 
