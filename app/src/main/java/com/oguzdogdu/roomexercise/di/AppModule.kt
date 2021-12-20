@@ -24,7 +24,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDefaultShoppingRepository(
+    fun provideRepository(
         dao: UserDao
     ) = UserRepository(dao) as UserRepositoryInterface
 

@@ -10,10 +10,6 @@ class FakeUserRepository : UserRepositoryInterface {
     private val users = mutableListOf<User>()
     private val usersLiveData = MutableLiveData<List<User>>(users)
 
-    fun observeAllUsers(): LiveData<List<User>> {
-        return usersLiveData
-    }
-
     override fun getUsers(): LiveData<List<User>> {
         return usersLiveData
     }
