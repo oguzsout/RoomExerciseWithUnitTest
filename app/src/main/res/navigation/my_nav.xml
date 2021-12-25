@@ -6,7 +6,7 @@
     app:startDestination="@id/listFragment">
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.oguzdogdu.roomexercise.fragments.ListFragment"
+        android:name="com.oguzdogdu.roomexercise.presentation.list.ListFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_list" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.oguzdogdu.roomexercise.fragments.AddFragment"
+        android:name="com.oguzdogdu.roomexercise.presentation.add.AddFragment"
         android:label="Add profile"
         tools:layout="@layout/fragment_add" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.oguzdogdu.roomexercise.fragments.UpdateFragment"
+        android:name="com.oguzdogdu.roomexercise.presentation.update.UpdateFragment"
         android:label="Update Profile"
         tools:layout="@layout/fragment_update" >
         <action
@@ -35,6 +35,6 @@
             app:destination="@id/listFragment" />
         <argument
             android:name="currentUser"
-            app:argType="com.oguzdogdu.roomexercise.model.User" />
+            app:argType="com.oguzdogdu.roomexercise.domain.model.User" />
     </fragment>
 </navigation>

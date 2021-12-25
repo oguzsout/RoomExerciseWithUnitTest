@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16sp"
-    android:background="#FFFFFF"
     android:id="@+id/rowLayout">
 
     <TextView

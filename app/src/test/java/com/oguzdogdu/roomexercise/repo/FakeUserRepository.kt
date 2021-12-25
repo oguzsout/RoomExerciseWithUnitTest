@@ -2,8 +2,8 @@ package com.oguzdogdu.roomexercise.repo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.oguzdogdu.roomexercise.model.User
-import com.oguzdogdu.roomexercise.repository.UserRepositoryInterface
+import com.oguzdogdu.roomexercise.domain.model.User
+import com.oguzdogdu.roomexercise.domain.repository.UserRepositoryInterface
 
 class FakeUserRepository : UserRepositoryInterface {
 

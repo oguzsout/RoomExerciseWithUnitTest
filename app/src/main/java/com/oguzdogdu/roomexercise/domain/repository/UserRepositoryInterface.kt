@@ -1,7 +1,7 @@
-package com.oguzdogdu.roomexercise.repository
+package com.oguzdogdu.roomexercise.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.oguzdogdu.roomexercise.model.User
+import com.oguzdogdu.roomexercise.domain.model.User
 
 interface UserRepositoryInterface {
     fun getUsers() : LiveData<List<User>>

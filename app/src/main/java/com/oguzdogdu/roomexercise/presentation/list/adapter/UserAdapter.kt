@@ -1,4 +1,4 @@
-package com.oguzdogdu.roomexercise.adapter
+package com.oguzdogdu.roomexercise.presentation.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.oguzdogdu.roomexercise.databinding.CustomRowBinding
-import com.oguzdogdu.roomexercise.fragments.ListFragmentDirections
-import com.oguzdogdu.roomexercise.model.User
+import com.oguzdogdu.roomexercise.presentation.list.ListFragmentDirections
+import com.oguzdogdu.roomexercise.domain.model.User
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
@@ -28,7 +28,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
         }
 
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-            return oldItem == newItem
+            return oldItem.id == newItem.id
         }
     }
 

@@ -1,4 +1,4 @@
-package com.oguzdogdu.roomexercise.model
+package com.oguzdogdu.roomexercise.domain.model
 
 import android.os.Parcelable
 import androidx.room.Entity

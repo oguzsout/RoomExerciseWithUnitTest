@@ -1,9 +1,10 @@
-package com.oguzdogdu.roomexercise
+package com.oguzdogdu.roomexercise.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.oguzdogdu.roomexercise.R
 import com.oguzdogdu.roomexercise.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

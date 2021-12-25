@@ -1,4 +1,4 @@
-package com.oguzdogdu.roomexercise.viewmodel
+package com.oguzdogdu.roomexercise.presentation.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth

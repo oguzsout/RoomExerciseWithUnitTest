@@ -1,11 +1,11 @@
-package com.oguzdogdu.roomexercise.di
+package com.oguzdogdu.roomexercise.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.oguzdogdu.roomexercise.data.UserDao
-import com.oguzdogdu.roomexercise.data.UserDatabase
-import com.oguzdogdu.roomexercise.repository.UserRepository
-import com.oguzdogdu.roomexercise.repository.UserRepositoryInterface
+import com.oguzdogdu.roomexercise.data.local.UserDao
+import com.oguzdogdu.roomexercise.data.local.UserDatabase
+import com.oguzdogdu.roomexercise.data.repository.UserRepository
+import com.oguzdogdu.roomexercise.domain.repository.UserRepositoryInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

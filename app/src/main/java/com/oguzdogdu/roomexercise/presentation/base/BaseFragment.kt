@@ -1,4 +1,4 @@
-package com.oguzdogdu.roomexercise.fragments
+package com.oguzdogdu.roomexercise.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

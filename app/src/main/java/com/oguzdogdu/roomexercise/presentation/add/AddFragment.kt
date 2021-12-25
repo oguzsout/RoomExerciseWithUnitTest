@@ -1,17 +1,15 @@
-package com.oguzdogdu.roomexercise.fragments
+package com.oguzdogdu.roomexercise.presentation.add
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.oguzdogdu.roomexercise.R
 import com.oguzdogdu.roomexercise.databinding.FragmentAddBinding
+import com.oguzdogdu.roomexercise.presentation.base.BaseFragment
 import com.oguzdogdu.roomexercise.util.Status
-import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
+import com.oguzdogdu.roomexercise.presentation.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

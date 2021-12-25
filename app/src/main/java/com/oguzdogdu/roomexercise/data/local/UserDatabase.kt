@@ -1,8 +1,8 @@
-package com.oguzdogdu.roomexercise.data
+package com.oguzdogdu.roomexercise.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.oguzdogdu.roomexercise.model.User
+import com.oguzdogdu.roomexercise.domain.model.User
 
 @Database(entities = [User::class],version = 2)
 abstract class UserDatabase: RoomDatabase() {

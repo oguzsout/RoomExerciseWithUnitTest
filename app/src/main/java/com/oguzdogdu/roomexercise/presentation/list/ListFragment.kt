@@ -1,4 +1,4 @@
-package com.oguzdogdu.roomexercise.fragments
+package com.oguzdogdu.roomexercise.presentation.list
 
 import android.os.Bundle
 import android.view.View
@@ -6,9 +6,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oguzdogdu.roomexercise.R
-import com.oguzdogdu.roomexercise.adapter.UserAdapter
+import com.oguzdogdu.roomexercise.presentation.list.adapter.UserAdapter
 import com.oguzdogdu.roomexercise.databinding.FragmentListBinding
-import com.oguzdogdu.roomexercise.viewmodel.UserViewModel
+import com.oguzdogdu.roomexercise.presentation.base.BaseFragment
+import com.oguzdogdu.roomexercise.presentation.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

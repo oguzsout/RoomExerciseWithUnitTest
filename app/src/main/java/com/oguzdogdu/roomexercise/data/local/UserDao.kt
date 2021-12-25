@@ -1,8 +1,8 @@
-package com.oguzdogdu.roomexercise.data
+package com.oguzdogdu.roomexercise.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.oguzdogdu.roomexercise.model.User
+import com.oguzdogdu.roomexercise.domain.model.User
 
 @Dao
 interface UserDao {
