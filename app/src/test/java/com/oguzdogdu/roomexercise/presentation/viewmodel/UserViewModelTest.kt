@@ -1,7 +1,7 @@
 package com.oguzdogdu.roomexercise.presentation.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.oguzdogdu.roomexercise.MainCoroutineRules
 import com.oguzdogdu.roomexercise.getOrAwaitValueTest
 import com.oguzdogdu.roomexercise.repo.FakeUserRepository
@@ -27,12 +27,31 @@ class UserViewModelTest {
     fun setup() {
         viewModel = UserViewModel(FakeUserRepository())
     }
+
     @Test
     fun `insert user without age returns error`() {
         viewModel.makeUser("Oguz", "Dogdu", "")
 
         val value = viewModel.insertUserMessage.getOrAwaitValueTest()
 
-        Truth.assertThat(value.status).isEqualTo(Status.ERROR)
+        assertThat(value.status).isEqualTo(Status.ERROR)
+    }
+
+    @Test
+    fun `insert user without name returns error`() {
+        viewModel.makeUser("", "Dogdu", "24")
+
+        val value = viewModel.insertUserMessage.getOrAwaitValueTest()
+
+        assertThat(value.status).isEqualTo(Status.ERROR)
+    }
+
+    @Test
+    fun `insert user without lastName returns error`() {
+        viewModel.makeUser("Oguz", "", "24")
+
+        val value = viewModel.insertUserMessage.getOrAwaitValueTest()
+
+        assertThat(value.status).isEqualTo(Status.ERROR)
     }
 }
