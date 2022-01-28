@@ -45,6 +45,7 @@
         android:layout_marginTop="32dp"
         android:autofillHints="true"
         android:ems="10"
+        android:hint="Age"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
