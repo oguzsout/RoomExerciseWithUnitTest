@@ -20,7 +20,7 @@ object AppModule {
     @Provides
     fun injectRoomDatabase(
         @ApplicationContext context: Context
-    ) = Room.databaseBuilder(context, UserDatabase::class.java, "user_db").fallbackToDestructiveMigration().build()
+    ) = Room.databaseBuilder(context, UserDatabase::class.java, "userdatabase").build()
 
     @Singleton
     @Provides
