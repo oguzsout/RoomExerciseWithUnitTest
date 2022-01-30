@@ -29,7 +29,7 @@ class AddFragment : BaseFragment<FragmentAddBinding>(FragmentAddBinding::inflate
         }
     }
     private fun insertDataToDatabase() {
-        userViewModel.insertUserMessage.observe(viewLifecycleOwner, {
+        userViewModel.insertUsersMessage.observe(viewLifecycleOwner, {
             when (it.status) {
                 Status.SUCCESS -> {
                     Toast.makeText(requireActivity(), "Success", Toast.LENGTH_LONG).show()

@@ -35,6 +35,6 @@
             app:destination="@id/listFragment" />
         <argument
             android:name="currentUser"
-            app:argType="com.oguzdogdu.roomexercise.domain.model.User" />
+            app:argType="com.oguzdogdu.roomexercise.domain.model.Users" />
     </fragment>
 </navigation>

@@ -8,33 +8,33 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.oguzdogdu.roomexercise.databinding.CustomRowBinding
 import com.oguzdogdu.roomexercise.presentation.list.ListFragmentDirections
-import com.oguzdogdu.roomexercise.domain.model.User
+import com.oguzdogdu.roomexercise.domain.model.Users
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
     class MyViewHolder(val binding: CustomRowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
+        fun bind(users: Users) {
             binding.apply {
-                firstNameTxt.text = user.firstName
-                lastNameTxt.text = user.lastName
-                ageTxt.text = user.age.toString()
+                firstNameTxt.text = users.firstName
+                lastNameTxt.text = users.lastName
+                ageTxt.text = users.age.toString()
             }
         }
     }
 
-    private val diffUtil = object : DiffUtil.ItemCallback<User>() {
-        override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+    private val diffUtil = object : DiffUtil.ItemCallback<Users>() {
+        override fun areItemsTheSame(oldItem: Users, newItem: Users): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+        override fun areContentsTheSame(oldItem: Users, newItem: Users): Boolean {
             return oldItem.id == newItem.id
         }
     }
 
     private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
 
-    var users: List<User>
+    var users: List<Users>
         get() = recyclerListDiffer.currentList
         set(value) = recyclerListDiffer.submitList(value)
 

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.oguzdogdu.roomexercise.domain.model.User
+import com.oguzdogdu.roomexercise.domain.model.Users
 import com.oguzdogdu.roomexercise.domain.repository.UserRepositoryInterface
 import com.oguzdogdu.roomexercise.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,8 +16,8 @@ class UserViewModel @Inject constructor(  private val repository : UserRepositor
 
     val userList = repository.getUsers()
 
-    private var insertUserMsg = MutableLiveData<Resource<User>>()
-    val insertUserMessage: LiveData<Resource<User>>
+    private var insertUserMsg = MutableLiveData<Resource<Users>>()
+    val insertUsersMessage: LiveData<Resource<Users>>
         get() = insertUserMsg
 
 
@@ -32,26 +32,26 @@ class UserViewModel @Inject constructor(  private val repository : UserRepositor
             insertUserMsg.postValue(Resource.error("Age should be number", null))
             return
         }
-        val user = User(name,lastName,userAge)
+        val user = Users(name,lastName,userAge)
         addUser(user)
         insertUserMsg.postValue(Resource.success(user))
     }
 
-    private fun addUser(user: User) {
+    private fun addUser(users: Users) {
         viewModelScope.launch {
-            repository.addUser(user)
+            repository.addUser(users)
         }
     }
 
-     fun updateUser(user: User) {
+     fun updateUser(users: Users) {
         viewModelScope.launch {
-            repository.updateUser(user)
+            repository.updateUser(users)
         }
     }
 
-    fun deleteUser(user: User) {
+    fun deleteUser(users: Users) {
         viewModelScope.launch {
-            repository.deleteUser(user)
+            repository.deleteUser(users)
         }
     }
 }

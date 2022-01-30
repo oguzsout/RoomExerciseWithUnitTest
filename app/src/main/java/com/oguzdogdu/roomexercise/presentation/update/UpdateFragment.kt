@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.oguzdogdu.roomexercise.R
 import com.oguzdogdu.roomexercise.databinding.FragmentUpdateBinding
-import com.oguzdogdu.roomexercise.domain.model.User
+import com.oguzdogdu.roomexercise.domain.model.Users
 import com.oguzdogdu.roomexercise.presentation.base.BaseFragment
 import com.oguzdogdu.roomexercise.presentation.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +40,7 @@ class UpdateFragment : BaseFragment<FragmentUpdateBinding>(FragmentUpdateBinding
         val firstName = binding.updateFirstName.text.toString()
         val lastName = binding.updateLastName.text.toString()
         val age = binding.updateAge.text.toString().toInt()
-        val updatedUser = User(firstName, lastName, age,args.currentUser.id)
+        val updatedUser = Users(firstName, lastName, age,args.currentUser.id)
         userViewModel.updateUser(updatedUser)
         Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show()
         findNavController().navigate(R.id.action_updateFragment_to_listFragment)
