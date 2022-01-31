@@ -12,7 +12,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class UserViewModelTest {
+class UsersViewModelTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -32,7 +32,7 @@ class UserViewModelTest {
     fun `insert user without age returns error`() {
         viewModel.makeUser("Oguz", "Dogdu", "")
 
-        val value = viewModel.insertUserMessage.getOrAwaitValueTest()
+        val value = viewModel.insertUsersMessage.getOrAwaitValueTest()
 
         assertThat(value.status).isEqualTo(Status.ERROR)
     }
@@ -41,7 +41,7 @@ class UserViewModelTest {
     fun `insert user without name returns error`() {
         viewModel.makeUser("", "Dogdu", "24")
 
-        val value = viewModel.insertUserMessage.getOrAwaitValueTest()
+        val value = viewModel.insertUsersMessage.getOrAwaitValueTest()
 
         assertThat(value.status).isEqualTo(Status.ERROR)
     }
@@ -50,7 +50,7 @@ class UserViewModelTest {
     fun `insert user without lastName returns error`() {
         viewModel.makeUser("Oguz", "", "24")
 
-        val value = viewModel.insertUserMessage.getOrAwaitValueTest()
+        val value = viewModel.insertUsersMessage.getOrAwaitValueTest()
 
         assertThat(value.status).isEqualTo(Status.ERROR)
     }
