@@ -1,6 +1,11 @@
 # RoomExerciseWithUnitTest
 Using the Room library and S.O.L.I.D. I tried to establish clean architecture by following the principles. Although it's like a simple app, it's basically very instructive. I continue to write tests of the application.
 
+# Layers
+- Data
+- Domain
+- Presentation
+
 ## Screenshots
 <p align="center">
 <img alt="RoomExerciseWithUnitTest"height="450px" src="https://user-images.githubusercontent.com/73955284/151713679-426ea60a-0ec1-4f9b-b11c-cf6490cf47d0.png"  />
