@@ -1,4 +1,5 @@
 # RoomExerciseWithUnitTest
+Using the Room library and S.O.L.I.D. I tried to establish clean architecture by following the principles. Although it's like a simple app, it's basically very instructive. I continue to write tests of the application.
 
 ## Screenshots
 <p align="center">
