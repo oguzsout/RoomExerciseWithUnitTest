@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.oguzdogdu.roomexercise.domain.model.Users
 import com.oguzdogdu.roomexercise.domain.repository.UserRepositoryInterface
 
-class FakeUserRepository : UserRepositoryInterface {
+class FakeUsersRepository : UserRepositoryInterface {
 
     private val users = mutableListOf<Users>()
     private val usersLiveData = MutableLiveData<List<Users>>(users)
